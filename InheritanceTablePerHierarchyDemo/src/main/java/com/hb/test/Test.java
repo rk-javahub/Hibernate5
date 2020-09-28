@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.hb.entity.ContractEmployee;
-import com.hb.entity.Employee;
+import com.hb.entity.User;
 import com.hb.entity.RegularEmployee;
 import com.hb.util.HibernateUtil;
 
@@ -14,7 +14,7 @@ public class Test {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Employee emp = new Employee();
+		User emp = new User();
 		emp.setName("Sachin");
 
 		RegularEmployee remp = new RegularEmployee();

@@ -8,10 +8,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.hb.entity.ContractEmployee;
+import com.hb.entity.Address;
 import com.hb.entity.User;
-import com.hb.entity.RegularEmployee;
-
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
@@ -33,8 +31,7 @@ public class HibernateUtil {
 			configuration.setProperties(properties);
 
 			configuration.addAnnotatedClass(User.class);
-			configuration.addAnnotatedClass(ContractEmployee.class);
-			configuration.addAnnotatedClass(RegularEmployee.class);
+			configuration.addAnnotatedClass(Address.class);
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();

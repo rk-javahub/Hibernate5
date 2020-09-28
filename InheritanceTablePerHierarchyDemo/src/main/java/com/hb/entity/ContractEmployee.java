@@ -9,7 +9,7 @@ import lombok.Setter;
 @DiscriminatorValue(value = "contract_employee")
 @Getter
 @Setter
-public class ContractEmployee extends Employee {
+public class ContractEmployee extends User {
 	private float pay_per_hour;
 	private String contract_duration;
 

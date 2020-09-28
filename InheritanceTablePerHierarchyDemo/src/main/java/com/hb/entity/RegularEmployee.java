@@ -10,7 +10,7 @@ import lombok.Setter;
 @DiscriminatorValue(value = "regular_employee")
 @Getter
 @Setter
-public class RegularEmployee extends Employee {
+public class RegularEmployee extends User {
 	private float salary;  
 	private int bonus;  
 
