@@ -34,23 +34,31 @@ public class Test {
 		Delivery delivery1 = new Delivery();
 		delivery1.setPartnerName("Zomato");
 		delivery1.setCharges(50d);
-		delivery1.setRestaurantList(restaurantList);
+		
 
 		Delivery delivery2 = new Delivery();
 		delivery2.setPartnerName("Swiggy");
 		delivery2.setCharges(40d);
-		delivery2.setRestaurantList(restaurantList);
+		
 
 		Delivery delivery3 = new Delivery();
 		delivery3.setPartnerName("Uber Eat");
 		delivery3.setCharges(55d);
-		delivery3.setRestaurantList(restaurantList);
+		
+
+		deliveries.add(delivery1);
+		deliveries.add(delivery2);
+		deliveries.add(delivery3);
+
+		restaurantList.add(restaurant1);
+		restaurantList.add(restaurant2);
+		restaurantList.add(restaurant3);
 
 		restaurant1.setDelivery(deliveries);
-		restaurant2.setDelivery(deliveries);
-		restaurant3.setDelivery(deliveries);
+		//delivery1.setRestaurantList(restaurantList);
 
 		session.save(restaurant1);
+		//session.save(restaurant1);
 		transaction.commit();
 	}
 }

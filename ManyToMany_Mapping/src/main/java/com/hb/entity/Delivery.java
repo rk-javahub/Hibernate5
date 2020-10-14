@@ -3,6 +3,7 @@ package com.hb.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +26,10 @@ import lombok.Setter;
 public class Delivery {
 	@Id
 	@GeneratedValue(generator = "delivery_id", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "delivery_id", sequenceName = "delivery_id")
+	@SequenceGenerator(name = "delivery_id", sequenceName = "delivery_id",allocationSize = 1)
 	private Integer deliveryId;
 	private String partnerName;
 	private Double charges;
-	@ManyToMany(mappedBy = "delivery")
+	@ManyToMany(mappedBy = "delivery",cascade = CascadeType.ALL)
 	Set<Restaurant> restaurantList = new HashSet<Restaurant>();
 }

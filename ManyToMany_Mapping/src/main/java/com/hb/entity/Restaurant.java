@@ -28,11 +28,11 @@ import lombok.ToString;
 public class Restaurant {
 	@Id
 	@GeneratedValue(generator = "restaurant_id", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "restaurant_id", sequenceName = "restaurant_id")
+	@SequenceGenerator(name = "restaurant_id", sequenceName = "restaurant_id",allocationSize = 1)
 	private Integer restaurantId;
 	private String restaurantName;
 	private String address;
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "restaurant_delivery", joinColumns = @JoinColumn(name = "restaurant_id"), inverseJoinColumns = @JoinColumn(name = "delivery_id"))
 	private Set<Delivery> delivery=new HashSet<Delivery>();
 }
