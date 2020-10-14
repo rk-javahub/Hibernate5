@@ -1,10 +1,14 @@
 package com.hb.entity;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -14,19 +18,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "user_otm")
 @Getter
 @Setter
 @NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(generator = "user_id", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "user_id", sequenceName = "user_id_generator",allocationSize = 1)
+	@SequenceGenerator(name = "user_id", sequenceName = "user_id_generator", allocationSize = 1)
 	private int id;
 	private String firstName;
 	private String lastName;
-	@OneToOne
+	@OneToMany
 	@Cascade(CascadeType.ALL)
-	private Address address;
+	@JoinTable(name = "user_account", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "accountid"))
+	private Set<BankAccount> bankAccount;
 
 }

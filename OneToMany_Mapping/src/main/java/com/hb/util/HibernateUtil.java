@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.hb.entity.BankAccount;
+import com.hb.entity.User;
+
 
 
 public class HibernateUtil {
@@ -24,12 +27,13 @@ public class HibernateUtil {
 			properties.put(Environment.PASS, "root");
 			properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 			properties.put(Environment.SHOW_SQL, "true");
-			properties.put(Environment.HBM2DDL_AUTO, "update");
+			properties.put(Environment.HBM2DDL_AUTO, "create");
 			properties.put(Environment.FORMAT_SQL, "true");
 
 			configuration.setProperties(properties);
 
-			//configuration.addAnnotatedClass(User.class);
+			configuration.addAnnotatedClass(User.class);
+			configuration.addAnnotatedClass(BankAccount.class);
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
