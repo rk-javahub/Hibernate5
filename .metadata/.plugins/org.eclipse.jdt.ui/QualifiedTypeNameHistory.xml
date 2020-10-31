@@ -24,4 +24,7 @@
 <fullyQualifiedTypeName name="org.hibernate.annotations.Cascade"/>
 <fullyQualifiedTypeName name="javax.persistence.SequenceGenerator"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+<fullyQualifiedTypeName name="com.hb.entity.Restaurant"/>
+<fullyQualifiedTypeName name="com.hb.entity.Delivery"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
 </qualifiedTypeNameHistroy>

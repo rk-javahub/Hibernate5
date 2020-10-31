@@ -5,7 +5,7 @@
 	<groupId>com.hb.demo</groupId>
 	<artifactId>HQL</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HQL Demo Application</name>
+	<name>HQL</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
