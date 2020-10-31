@@ -31,10 +31,10 @@ public class Test {
 		Query<Restaurant> query = session.createQuery("from Restaurant");
 		List<Restaurant> list = query.list();
 		list.forEach(restaurant -> {
-			System.out
-					.println("****Hotel Details**** " + restaurant.getRestaurantName() + " " + restaurant.getAddress());
+			System.out.println("****Hotel Details**** \n" + restaurant.getRestaurantName() + " "
+					+ restaurant.getAddress() + "\n****Delivery Details****");
 			restaurant.getDelivery().forEach(delivery -> {
-				System.out.println("****Delivery Details**** " + delivery.getPartnerName());
+				System.out.println(delivery.getPartnerName());
 				;
 			});
 		});
