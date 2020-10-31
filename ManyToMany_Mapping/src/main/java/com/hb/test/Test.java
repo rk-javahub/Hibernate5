@@ -55,10 +55,10 @@ public class Test {
 		restaurantList.add(restaurant2);
 		restaurantList.add(restaurant3);
 
-		restaurant1.setDelivery(deliveries);
+		restaurant2.setDelivery(deliveries);
 		//delivery1.setRestaurantList(restaurantList);
 
-		session.save(restaurant1);
+		session.save(restaurant2);
 		//session.save(restaurant1);
 		transaction.commit();
 	}

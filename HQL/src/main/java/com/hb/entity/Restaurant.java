@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,11 +29,11 @@ import lombok.ToString;
 public class Restaurant {
 	@Id
 	@GeneratedValue(generator = "restaurant_id", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "restaurant_id", sequenceName = "restaurant_id",allocationSize = 1)
+	@SequenceGenerator(name = "restaurant_id", sequenceName = "restaurant_id", allocationSize = 1)
 	private Integer restaurantId;
 	private String restaurantName;
 	private String address;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "restaurant_delivery", joinColumns = @JoinColumn(name = "restaurant_id"), inverseJoinColumns = @JoinColumn(name = "delivery_id"))
-	private Set<Delivery> delivery=new HashSet<Delivery>();
+	private Set<Delivery> delivery = new HashSet<Delivery>();
 }
