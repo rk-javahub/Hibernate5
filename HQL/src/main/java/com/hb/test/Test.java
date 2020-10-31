@@ -13,6 +13,7 @@ import com.hb.util.HibernateUtil;
 
 public class Test {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -27,17 +28,31 @@ public class Test {
 		 */
 
 		// Retrieve record by using HQL
-		@SuppressWarnings("unchecked")
-		Query<Restaurant> query = session.createQuery("from Restaurant");
-		List<Restaurant> list = query.list();
-		list.forEach(restaurant -> {
-			System.out.println("****Hotel Details**** \n" + restaurant.getRestaurantName() + " "
-					+ restaurant.getAddress() + "\n****Delivery Details****");
-			restaurant.getDelivery().forEach(delivery -> {
-				System.out.println(delivery.getPartnerName());
-				;
-			});
-		});
+		/*
+		 * @SuppressWarnings("unchecked") Query<Restaurant> query =
+		 * session.createQuery("from Restaurant"); List<Restaurant> list = query.list();
+		 * list.forEach(restaurant -> { System.out.println("****Hotel Details**** \n" +
+		 * restaurant.getRestaurantName() + " " + restaurant.getAddress() +
+		 * "\n****Delivery Details****"); restaurant.getDelivery().forEach(delivery -> {
+		 * System.out.println(delivery.getPartnerName()); ; }); });
+		 */
 
+		// Retrieve single record by using HQL
+		/*
+		 * @SuppressWarnings("unchecked") Query<Restaurant> query =
+		 * session.createQuery("from Restaurant where restaurantId= :id");
+		 * query.setInteger("id", 2); Restaurant restaurant = query.uniqueResult();
+		 * System.out.println(restaurant.getRestaurantName() + " " +
+		 * restaurant.getAddress());
+		 */
+
+		@SuppressWarnings("unchecked")
+		Query<Restaurant> query = session.createQuery("update Restaurant set restaurantName= :name where restaurantId= :id");
+		query.setParameter("name", "Oasis");
+		query.setInteger("id", 2);
+		session.beginTransaction();
+		int i=query.executeUpdate();
+		System.out.println(i);
+		
 	}
 }
