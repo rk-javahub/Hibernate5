@@ -46,13 +46,19 @@ public class Test {
 		 * restaurant.getAddress());
 		 */
 
+		// Update Query
+		/*
+		 * @SuppressWarnings("unchecked") Query<Restaurant> query = session
+		 * .createQuery("update Restaurant set restaurantName= :name where restaurantId= :id"
+		 * ); query.setParameter("name", "Oasis"); query.setInteger("id", 2);
+		 * session.beginTransaction(); int i = query.executeUpdate();
+		 * System.out.println(i);
+		 */
+
 		@SuppressWarnings("unchecked")
-		Query<Restaurant> query = session.createQuery("update Restaurant set restaurantName= :name where restaurantId= :id");
-		query.setParameter("name", "Oasis");
-		query.setInteger("id", 2);
-		session.beginTransaction();
-		int i=query.executeUpdate();
-		System.out.println(i);
-		
+		Query<Double> sum_of_charges = session.createQuery("select sum(charges) from Delivery");
+		double charges = sum_of_charges.uniqueResult();
+		System.out.println(charges);
+
 	}
 }
